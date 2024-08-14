@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:TimeApp.ViewModels"
+             xmlns:controls="clr-namespace:TimeApp.Controls"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+			 x:Class="TimeApp.Views.MainPage"
+             xmlns:helpers="clr-namespace:TimeApp.Helpers"
+			 x:DataType="vm:MainViewModel">
+    <AbsoluteLayout>
+        <StackLayout Padding="25" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <Label x:Name="Saludo" Text="" FontSize="20" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+            <Label x:Name="Empresa" Text="" HorizontalTextAlignment="Center" />
+            <HorizontalStackLayout VerticalOptions="Start">
+                <Label Margin="0, 22, 10, 0" FontFamily="FontAwesomeRegular" Text="{x:Static helpers:FontAwesomeIcons.Calendar}"></Label>
+                <Label Margin="0, 20, 0, 0" Text="{Binding CurrentDate, StringFormat='{0:dddd, d \\de MMMM \\de yyyy}'}" />
+            </HorizontalStackLayout>
+            <controls:AttendanceControl VerticalOptions="StartAndExpand" Margin="0, 20, 0, 20" />
+            <controls:ShiftControl x:Name="shiftView" VerticalOptions="StartAndExpand" />
+            <Grid ColumnDefinitions="*, *">
+                <Button Margin="10, 0, 10, 0" 
+                        Grid.Column="0" 
+                        Text="Entrada" 
+                        BackgroundColor="Green" 
+                        HorizontalOptions="FillAndExpand"
+                        Clicked="EntradaButton_Clicked"/>
+                <Button Margin="10, 0, 10, 0" 
+                        Grid.Column="1" 
+                        Text="Salida" 
+                        BackgroundColor="Red" 
+                        HorizontalOptions="FillAndExpand"
+                        Clicked="SalidaButton_Clicked"/>
+            </Grid>
+        </StackLayout>
+        <StackLayout
+                x:Name="aiLayout"
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="WhiteSmoke" Opacity="0.5">
+            <ActivityIndicator Color="{StaticResource Primary}"
+                               HeightRequest="50" WidthRequest="50"
+                               x:Name="Waiting" IsRunning="True" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" x:Name="checkResult">
+            <skia:SKLottieView
+                Source="check_animated.json"
+                RepeatCount="0"
+                HeightRequest="200"
+                WidthRequest="200"
+                IsVisible="false"
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand"/>
+            <skia:SKLottieView
+                Source="failed_animated.json"
+                RepeatCount="0"
+                HeightRequest="200"
+                WidthRequest="200"
+                IsVisible="false"
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="TimeApp.Controls.AttendanceControl"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:TimeApp.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/dotnet/2021/maui/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:TimeApp.Controls"
+    xmlns:model="clr-namespace:TimeApp.Models"
+    x:DataType="vm:MainViewModel"
+    mc:Ignorable="d">
+    <StackLayout VerticalOptions="StartAndExpand">
+        <CarouselView x:Name="AttView" ItemsSource="{Binding Attendances}" IndicatorView="indicatorView" EmptyView="No hay asistencia">
+            <CarouselView.ItemTemplate>
+                <DataTemplate x:DataType="model:AttendanceItem">
+                    <Grid Margin="0, 20, 0, 0" 
+                              ColumnDefinitions="*, *" 
+                              RowDefinitions="Auto, Auto, Auto, Auto, Auto">
+                        <Label Margin="0, 5, 0, 5" Grid.Row="0" Grid.Column="0" Text="Turno actual" FontAttributes="Bold" />
+                        <Label Margin="0, 5, 0, 5" Grid.Row="0" Grid.Column="1" Text="{Binding TurnoActual}" />
+                        <Label Margin="0, 5, 0, 5" Grid.Row="1" Grid.Column="0" Text="Hora de llegada" FontAttributes="Bold" />
+                        <Label Margin="0, 5, 0, 5" Grid.Row="1" Grid.Column="1" Text="{Binding HoraEntrada, StringFormat='{0:HH:mm}'}" />
+                        <Label Margin="0, 5, 0, 5" Grid.Row="2" Grid.Column="0" Text="Hora de salida" FontAttributes="Bold" />
+                        <Label Margin="0, 5, 0, 5" Grid.Row="2" Grid.Column="1" Text="{Binding HoraSalida, StringFormat='{0:HH:mm}'}" />
+                        <Label Margin="0, 5, 0, 5" Grid.Row="3" Grid.Column="0" Text="Horas trabajadas" FontAttributes="Bold" />
+                        <Label Margin="0, 5, 0, 5" Grid.Row="3" Grid.Column="1" Text="{Binding HorasTrabajadas, StringFormat='{0:hh} h {0:mm} m'}" />
+                    </Grid>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <IndicatorView x:Name="indicatorView"
+                   IndicatorColor="Gray"
+                   SelectedIndicatorColor="Black"
+                   HorizontalOptions="Center"
+                   Margin="0, 20, 0, 0"/>
+    </StackLayout>
+</ContentView>

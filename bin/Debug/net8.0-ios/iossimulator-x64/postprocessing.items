@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <_PostProcessingItem Include="DAttendance.app/DAttendance">
+      <BCSymbolMapName>DAttendance.bcsymbolmap</BCSymbolMapName>
+      <NoDSymUtil>true</NoDSymUtil>
+      <dSYMSourcePathExists>false</dSYMSourcePathExists>
+      <NoSymbolStrip>true</NoSymbolStrip>
+      <dSYMInfoPlistRelativePath>DAttendance.app.dSYM\Contents\Info.plist</dSYMInfoPlistRelativePath>
+      <SymbolFile>\Users\desytec\Library\Caches\Xamarin\mtbs\builds\DAttendance\0cad2c75069ecd66594c27cbe9f174253bd30c82573ff12c5f7fe1ea93ac3833\obj\Debug\net8.0-ios\iossimulator-x64\mtouch-symbols.list</SymbolFile>
+      <DSymName>DAttendance.app.dSYM</DSymName>
+      <SourceProjectPath>C:\WorkingFolder\Projects\Desytec\Development\Desytec-Security-Platform\Mobile\DAttendance</SourceProjectPath>
+    </_PostProcessingItem>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+	x:Class="TimeApp.AppShell"
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:controls="clr-namespace:TimeApp.Controls"
+	xmlns:views="clr-namespace:TimeApp.Views"
+    xmlns:helpers="clr-namespace:TimeApp.Helpers"
+	xmlns:local="clr-namespace:TimeApp">
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent
+            Title="Cargando"
+            Shell.NavBarIsVisible="false"
+            Shell.TabBarIsVisible="false"
+            FlyoutItemIsVisible="False"
+            ContentTemplate="{DataTemplate views:LoadingPage}"
+            Route="LoadingPage" />
+        <ShellContent Route="LoginPage"
+                      Shell.NavBarIsVisible="false"
+                      Shell.TabBarIsVisible="false"
+                      FlyoutItemIsVisible="False"
+                      ContentTemplate="{DataTemplate views:LoginPage}"/>
+        <ShellContent
+		    Shell.NavBarIsVisible="true"
+            Shell.TabBarIsVisible="false"
+		    Title="Jornada Laboral"
+		    ContentTemplate="{DataTemplate views:MainPage}"
+		    Route="MainPage">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FontAwesomeSolid" Glyph="{x:Static helpers:FontAwesomeIcons.Briefcase}" Color="Coral" Size="50"/>
+            </ShellContent.Icon>
+        </ShellContent>
+	    <ShellContent
+		    Shell.NavBarIsVisible="true"
+            Shell.TabBarIsVisible="false"
+		    Title="Historia"
+		    ContentTemplate="{DataTemplate views:AsistenciaHistoricaPage}"
+		    Route="AsistenciaHistoricaPage">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FontAwesomeSolid" Glyph="{x:Static helpers:FontAwesomeIcons.History}" Color="MediumVioletRed" Size="50"/>
+            </ShellContent.Icon>
+        </ShellContent>
+	    <ShellContent
+		    Shell.NavBarIsVisible="true"
+            Shell.TabBarIsVisible="false"
+		    Title="Definición de Turno"
+		    ContentTemplate="{DataTemplate views:TurnoPage}"
+		    Route="TurnoPage">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FontAwesomeSolid" Glyph="{x:Static helpers:FontAwesomeIcons.Clock}" Color="IndianRed" Size="50"/>
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent
+		    Shell.NavBarIsVisible="true"
+            Shell.TabBarIsVisible="false"
+		    Title="Ubicación"
+		    ContentTemplate="{DataTemplate views:UbicacionPage}"
+		    Route="UbicacionPage">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FontAwesomeSolid" Glyph="{x:Static helpers:FontAwesomeIcons.Map}" Color="SteelBlue" Size="50"/>
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent
+		    Shell.NavBarIsVisible="true"
+            Shell.TabBarIsVisible="false"
+		    Title="Enrolamiento"
+		    ContentTemplate="{DataTemplate views:EnrolamientoPage}"
+		    Route="EnrolamientoPage">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FontAwesomeSolid" Glyph="{x:Static helpers:FontAwesomeIcons.User}" Color="Maroon" Size="50"/>
+            </ShellContent.Icon>
+        </ShellContent>
+    </FlyoutItem>
+    <MenuItem Text="Cerrar Sesión" Clicked="LogOut_Clicked">
+        <MenuItem.IconImageSource>
+            <FontImageSource FontFamily="FontAwesomeSolid" Glyph="{x:Static helpers:FontAwesomeIcons.SignOut}" Color="Tomato" Size="50"/>
+        </MenuItem.IconImageSource>
+    </MenuItem>
+    <Shell.FlyoutFooter>
+        <controls:FooterControl />
+    </Shell.FlyoutFooter>
+</Shell>

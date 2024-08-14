@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="TimeApp.Views.LoginPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:TimeApp.Views"
+    Title="Autorización">
+    <AbsoluteLayout>
+        <VerticalStackLayout 
+            Spacing="25" 
+            Padding="30,0" 
+            VerticalOptions="Center"
+            AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+
+            <Image Source="login_logo.jpg" HeightRequest="64" WidthRequest="64" />
+
+            <VerticalStackLayout Spacing="5">
+                <Label Text="¡ Bienvenid@ !" FontSize="28" TextColor="Gray" HorizontalTextAlignment="Center" />
+                <Label Text="Ingresa a tu cuenta" FontSize="18" TextColor="Gray" HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                    <Image Source="user.png" HeightRequest="20" WidthRequest="20" />
+                </Frame>
+                <Frame HeightRequest="56" Margin="-20,0,0,0" Padding="20,0,0,0" HasShadow="True" BorderColor="White"  HorizontalOptions="FillAndExpand">
+                    <StackLayout>
+                        <Entry x:Name="Username" Margin="5,0,0,0" Placeholder="Correo electrónico" FontSize="18" Keyboard="Email" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <Frame ZIndex="1" HasShadow="True" BorderColor="White" HeightRequest="56" WidthRequest="56" CornerRadius="28">
+                    <Image Source="lock.png" HeightRequest="20" WidthRequest="20" />
+                </Frame>
+                <Frame HeightRequest="56" Margin="-20,0,0,0" Padding="20,0,0,0" HasShadow="True" BorderColor="White"  HorizontalOptions="FillAndExpand">
+                    <StackLayout>
+                        <Entry x:Name="Password" Margin="5,0,0,0" Placeholder="Contraseña" IsPassword="True" FontSize="18" />
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+
+            <Button Margin="0,20,0,0"
+                    x:Name="LoginButton"
+                    Clicked="LoginButton_Clicked"
+                    FontAttributes="Bold"
+                    TextColor="MidnightBlue"
+                    FontSize="16"
+                    HeightRequest="45"
+                    Text="Ingresar" VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="FillAndExpand" />
+        </VerticalStackLayout>
+        <StackLayout
+                    x:Name="aiLayout"
+                    IsVisible="False"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    BackgroundColor="WhiteSmoke" Opacity="0.5">
+            <ActivityIndicator Color="{StaticResource Primary}"
+                               HeightRequest="50" WidthRequest="50"
+                               x:Name="Waiting" IsRunning="False" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

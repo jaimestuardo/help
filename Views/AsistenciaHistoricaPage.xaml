@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:TimeApp.ViewModels"
+			 xmlns:model="clr-namespace:TimeApp.Models"
+             xmlns:local="clr-namespace:TimeApp.Helpers"
+			 x:Class="TimeApp.Views.AsistenciaHistoricaPage"
+			 x:DataType="vm:AsistenciaHistoricaViewModel">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="inTemplate" 
+                          x:DataType="model:HistoryItem">
+                <Frame Margin="4" Padding="12">
+                    <Grid ColumnDefinitions="*, *" 
+                          RowDefinitions="*, *, *">
+                        <Label Text="{Binding FechaHora, StringFormat='{0:dddd, d \\de MMMM \\de yyyy}'}" 
+                               Grid.ColumnSpan="2" 
+                               Grid.Column="0" 
+                               Grid.Row="0" 
+                               TextColor="Green" 
+                               FontAttributes="Bold" />
+                        <BoxView   
+                              Color="Silver"  
+                              Margin="0,15,0,15"                   
+                              HeightRequest="1"  
+                              Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                              HorizontalOptions="Fill" />
+                        <Label Text="{Binding FechaHora, StringFormat='{0:HH:mm}'}" 
+                               Grid.Column="0" 
+                               Grid.Row="2" 
+                               TextColor="Green" />
+                        <Label Text="{Binding Direccion}" 
+                               Grid.Column="1" 
+                               Grid.Row="2" 
+                               TextColor="Green" />
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+            <DataTemplate x:Key="outTemplate" 
+                          x:DataType="model:HistoryItem">
+                <Frame Margin="4" Padding="12">
+                    <Grid ColumnDefinitions="*, *" RowDefinitions="*, *, *">
+                        <Label Text="{Binding FechaHora, StringFormat='{0:dddd, d \\de MMMM \\de yyyy}'}" 
+                               Grid.ColumnSpan="2" 
+                               Grid.Column="0" 
+                               Grid.Row="0" 
+                               TextColor="Red" 
+                               FontAttributes="Bold" />
+                        <BoxView   
+                              Color="Silver"  
+                              Margin="0,15,0,15"                   
+                              HeightRequest="1"  
+                              Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"
+                              HorizontalOptions="Fill" />
+                        <Label Text="{Binding FechaHora, StringFormat='{0:HH:mm}'}" 
+                               Grid.Column="0" 
+                               Grid.Row="2" 
+                               TextColor="Red"/>
+                        <Label Text="{Binding Direccion}" 
+                               Grid.Column="1" 
+                               Grid.Row="2" 
+                               TextColor="Red" />
+                    </Grid>
+                </Frame>
+            </DataTemplate>
+            <local:AttTypeColorDataTemplateSelector x:Key="attTypeColorDataTemplateSelector"
+                InTemplate="{StaticResource inTemplate}"
+                OutTemplate="{StaticResource outTemplate}" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <AbsoluteLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <CollectionView ItemTemplate="{StaticResource attTypeColorDataTemplateSelector}" 
+                            ItemsSource="{Binding Items}" 
+                            RemainingItemsThreshold="10" 
+                            EmptyView="No hay asistencia"
+                            Margin="0, 20, 0, 0"/>
+        </StackLayout>
+        <StackLayout
+                        x:Name="aiLayout"
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        BackgroundColor="WhiteSmoke" Opacity="0.5">
+            <ActivityIndicator Color="{StaticResource Primary}"
+                               HeightRequest="50" WidthRequest="50"
+                               x:Name="Waiting" IsRunning="True" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

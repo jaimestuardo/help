@@ -1,0 +1,1 @@
+C:\WorkingFolder\Projects\Desytec\Development\Desytec-Security-Platform\Mobile\TimeApp\TimeApp.csproj;x64

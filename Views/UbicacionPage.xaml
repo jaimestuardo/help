@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:TimeApp.ViewModels"
+			 x:Class="TimeApp.Views.UbicacionPage"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             xmlns:sensors="clr-namespace:Microsoft.Maui.Devices.Sensors;assembly=Microsoft.Maui.Essentials"
+             xmlns:model="clr-namespace:TimeApp.Models"
+			 x:DataType="vm:UbicacionViewModel">
+    <AbsoluteLayout>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <maps:Map x:Name="Ubicacion" ItemsSource="{Binding Locations}" IsShowingUser="true">
+            </maps:Map>
+        </StackLayout>
+        <StackLayout
+                    x:Name="aiLayout"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    BackgroundColor="WhiteSmoke" Opacity="0.5">
+            <ActivityIndicator Color="{StaticResource Primary}"
+                               HeightRequest="50" WidthRequest="50"
+                               x:Name="Waiting" IsRunning="True" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>

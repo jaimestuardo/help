@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:helpers="clr-namespace:TimeApp.Helpers"
+             x:Class="TimeApp.Controls.Wizard.Steps.SetupWizardWelcomeView">
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <VerticalStackLayout>
+            <Label 
+                Text="¡ Bienvenido a tu enrolamiento !" FontFamily="RobotoRegular" FontSize="18" FontAttributes="Bold"
+                TextColor="{AppThemeBinding Light={StaticResource Tertiary}, Dark={StaticResource White}}"
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
+        <StackLayout Padding="0, 20, 0, 20" VerticalOptions="CenterAndExpand">
+            <Label FontFamily="RobotoRegular" Text="Por medio de este asistente, podrás darte de alta en el sistema de control de asistencia de tu empresa." />
+            <Label Padding="0, 10, 0, 0" FontFamily="RobotoRegular" Text="Este proceso se está realizando automáticamente debido a que nunca lo has realizado." />
+            <Label Padding="0, 10, 0, 0" FontFamily="RobotoRegular" Text="Podrás volver a realizarlo cuando necesites cambiar alguna información." />
+            <Label Padding="0, 10, 0, 0" FontFamily="RobotoRegular" Text="Presiona el botón Siguiente para continuar." />
+        </StackLayout>
+    </StackLayout>
+</ContentView>

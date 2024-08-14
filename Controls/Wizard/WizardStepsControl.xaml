@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:TimeApp.ViewModels"
+             xmlns:local="clr-namespace:TimeApp.Controls.Wizard.Steps"
+             xmlns:helpers="clr-namespace:TimeApp.Helpers"
+             x:Class="TimeApp.Controls.Wizard.WizardStepsControl"
+             x:DataType="vm:EnrolamientoViewModel">
+    <AbsoluteLayout>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <Grid VerticalOptions="FillAndExpand">
+                <local:SetupWizardWelcomeView x:Name="Welcome"  IsVisible="True" StartProcessing="StartProcessing" EndProcessing="EndProcessing" />
+                <local:SetupWizardStep1View x:Name="Step1" IsVisible="False" StartProcessing="StartProcessing" EndProcessing="EndProcessing" />
+                <local:SetupWizardStep2View x:Name="Step2" IsVisible="False" StartProcessing="StartProcessing" EndProcessing="EndProcessing" />
+                <local:SetupWizardStep3View x:Name="Step3" IsVisible="False" StartProcessing="StartProcessing" EndProcessing="EndProcessing" />
+            </Grid>
+            <Grid ColumnDefinitions="*, *">
+                <Button 
+                    IsVisible="False"
+                    x:Name="ButtonPrevious"
+                    Margin="10, 0, 10, 0" 
+                    Text="Anterior" 
+                    Grid.Column="0" 
+                    HorizontalOptions="Start" 
+                    BorderColor="DodgerBlue" 
+                    BorderWidth="1" 
+                    BackgroundColor="LightBlue" 
+                    TextColor="Black"
+                    Clicked="OnPreviousClicked">
+                    <Button.ImageSource>
+                        <FontImageSource
+                                    FontFamily="FontAwesomeSolid"
+                                    Glyph="{x:Static helpers:FontAwesomeIcons.Previous}"
+                                    Color="DodgerBlue"
+                                    Size="14"/>
+                    </Button.ImageSource>
+                </Button>
+                <Button
+                    x:Name="ButtonNext"
+                    Margin="10, 0, 10, 0" 
+                    Text="Siguiente"  
+                    Grid.Column="1" 
+                    HorizontalOptions="End" 
+                    ContentLayout="Right, 10" 
+                    BorderColor="DodgerBlue" 
+                    BorderWidth="1"  
+                    BackgroundColor="LightBlue" 
+                    TextColor="Black"
+                    Clicked="OnNextClicked">
+                    <Button.ImageSource>
+                        <FontImageSource x:Name="GlyphNext"
+                                    FontFamily="FontAwesomeSolid"
+                                    Glyph="{x:Static helpers:FontAwesomeIcons.Next}"
+                                    Color="DodgerBlue"
+                                    Size="14"/>
+                    </Button.ImageSource>
+                </Button>
+            </Grid>
+        </StackLayout>
+        <StackLayout
+                    x:Name="aiLayout"
+                    IsVisible="False"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    BackgroundColor="WhiteSmoke" Opacity="0.5">
+            <ActivityIndicator Color="{StaticResource Primary}"
+                               HeightRequest="50" WidthRequest="50"
+                               x:Name="Waiting" IsRunning="False" VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentView>

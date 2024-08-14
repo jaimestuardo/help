@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <IsFirstTimeProjectOpen>False</IsFirstTimeProjectOpen>
+    <ActiveDebugFramework>net8.0-ios</ActiveDebugFramework>
+    <ActiveDebugProfile>Simulador</ActiveDebugProfile>
+    <SelectedPlatformGroup>Simulator</SelectedPlatformGroup>
+    <DefaultDevice>iPhone 15 Pro iOS 17.5</DefaultDevice>
+    <DeveloperId>ACE5W8574E</DeveloperId>
+    <DevelopmentTeamId>Q694PTSW9R</DevelopmentTeamId>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetPlatformIdentifier)'=='iOS'">
+    <RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+</Project>

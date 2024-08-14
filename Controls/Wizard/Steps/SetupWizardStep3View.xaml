@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:helpers="clr-namespace:TimeApp.Helpers"
+             x:Class="TimeApp.Controls.Wizard.Steps.SetupWizardStep3View">
+    <ContentView.Resources>
+        <Style x:Key="InvalidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Red" />
+        </Style>
+        <Style x:Key="ValidEntryStyle" TargetType="Entry">
+            <Setter Property="TextColor" Value="Green" />
+        </Style>
+    </ContentView.Resources>
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <VerticalStackLayout VerticalOptions="Start" HorizontalOptions="Center">
+            <Border Stroke="#649B33"
+                    StrokeThickness="1"
+                    StrokeShape="Ellipse 30, 30"
+                    Margin="0, 0, 30, 0"
+                    Grid.Row="1" Grid.Column="0"
+                    HorizontalOptions="Start">
+                <Label HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center" 
+                    WidthRequest="30" HeightRequest="30"
+                    Text="3" FontAttributes="Bold" />
+            </Border>
+        </VerticalStackLayout>
+        <StackLayout Padding="0, 20, 0, 20" VerticalOptions="StartAndExpand">
+            <Label Text="Ingresa tu correo electrónico personal" />
+            <Entry x:Name="Email" MaxLength="50" Placeholder="Correo electrónico" Keyboard="Email">
+                <Entry.Behaviors>
+                    <toolkit:MultiValidationBehavior 
+                        InvalidStyle="{StaticResource InvalidEntryStyle}"  
+                        ValidStyle="{StaticResource ValidEntryStyle}"
+                        Flags="ValidateOnValueChanged">
+
+                        <toolkit:EmailValidationBehavior 
+                                DecorationFlags="Trim,NullToEmpty"
+                                Flags="ValidateOnValueChanged" 
+                                MinimumLength="1"
+                                MaximumLength="50"
+                                toolkit:MultiValidationBehavior.Error="Debes ingresar el correo electrónico de forma correcta."  />
+                    </toolkit:MultiValidationBehavior>
+                </Entry.Behaviors>
+            </Entry>
+            <Label Text="Elige una contraseña" Padding="0, 20, 0, 0" />
+            <Entry x:Name="Password" MaxLength="12" Placeholder="Ingresa contraseña segura" IsPassword="True">
+                <Entry.Behaviors>
+                    <toolkit:MultiValidationBehavior 
+                        InvalidStyle="{StaticResource InvalidEntryStyle}"  
+                        ValidStyle="{StaticResource ValidEntryStyle}"
+                        Flags="ValidateOnValueChanged">
+
+                        <toolkit:TextValidationBehavior 
+                            InvalidStyle="{StaticResource InvalidEntryStyle}"
+                            ValidStyle="{StaticResource ValidEntryStyle}"
+                            Flags="ValidateOnValueChanged"
+                            toolkit:MultiValidationBehavior.Error="Debes ingresar la contraseña." 
+                            MinimumLength="1"
+                            MaximumLength="12" />
+                        
+                        <toolkit:CharactersValidationBehavior 
+                            x:Name="DigitValidation" 
+                            CharacterType="Digit" 
+                            MinimumCharacterTypeCount="1" 
+                            DecorationFlags="Trim,NullToEmpty"
+                            toolkit:MultiValidationBehavior.Error="La contraseña debe tener al menos 1 dígito." 
+                            RegexPattern="" />
+
+                        <toolkit:CharactersValidationBehavior 
+                            x:Name="UpperValidation" 
+                            CharacterType="UppercaseLetter" 
+                            MinimumCharacterTypeCount="1" 
+                            DecorationFlags="Trim,NullToEmpty"
+                            toolkit:MultiValidationBehavior.Error="La contraseña debe tener al menos una letra en mayúscula." 
+                            RegexPattern="" />
+
+                        <toolkit:CharactersValidationBehavior 
+                            x:Name="LowerValidation" 
+                            CharacterType="LowercaseLetter" 
+                            MinimumCharacterTypeCount="1" 
+                            DecorationFlags="Trim,NullToEmpty"
+                            toolkit:MultiValidationBehavior.Error="La contraseña debe tener al menos una letra en minúscula." 
+                            RegexPattern="" />
+
+                        <toolkit:CharactersValidationBehavior 
+                            x:Name="SymbolValidation" 
+                            CharacterType="NonAlphanumericSymbol" 
+                            MinimumCharacterTypeCount="1" 
+                            DecorationFlags="Trim,NullToEmpty"
+                            toolkit:MultiValidationBehavior.Error="La contraseña debe tener al menos 1 símbolo." 
+                            RegexPattern=""  />
+
+                        <toolkit:CharactersValidationBehavior 
+                            x:Name="AnyValidation" 
+                            CharacterType="Any" 
+                            MinimumCharacterTypeCount="6" 
+                            DecorationFlags="Trim,NullToEmpty"
+                            toolkit:MultiValidationBehavior.Error="La contraseña debe tener al menos 6 caracteres." 
+                            RegexPattern="" />
+                    </toolkit:MultiValidationBehavior>
+                </Entry.Behaviors>
+            </Entry>
+            <Label Text="Repite la contraseña" Padding="0, 20, 0, 0" />
+            <Entry x:Name="ConfirmPassword" MaxLength="12" Placeholder="Repite contraseña segura" IsPassword="True" />
+            <HorizontalStackLayout>
+                <toolkit:AvatarView x:Name="myPicture"
+                                HeightRequest="130"
+                                WidthRequest="130"
+                                CornerRadius="10"
+                                BorderWidth="1"
+                                Margin="20"
+                                BorderColor="Silver" />
+                <Button Margin="0,20,0,0"
+                        x:Name="PictureButton"
+                        Clicked="PictureButton_Clicked"
+                        BackgroundColor="LightCoral"
+                        BorderColor="DarkGoldenrod"
+                        BorderWidth="1"
+                        TextColor="MidnightBlue"
+                        FontSize="16"
+                        HeightRequest="45"
+                        Text="Tomar Foto" VerticalOptions="CenterAndExpand" 
+                        HorizontalOptions="FillAndExpand" />
+            </HorizontalStackLayout>
+        </StackLayout>
+    </StackLayout>
+</ContentView>

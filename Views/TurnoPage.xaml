@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:vm="clr-namespace:TimeApp.ViewModels"
+             xmlns:model="clr-namespace:TimeApp.Models"
+			 x:Class="TimeApp.Views.TurnoPage"
+			 x:DataType="vm:TurnoViewModel">
+    <AbsoluteLayout>
+        <StackLayout VerticalOptions="FillAndExpand" 
+                     HorizontalOptions="FillAndExpand" 
+                     AbsoluteLayout.LayoutBounds="0,0,1,1"
+                     AbsoluteLayout.LayoutFlags="All">
+            <CollectionView ItemsSource="{Binding Shifts}" 
+                            EmptyView="No hay turnos" 
+                            Margin="0, 20, 0, 0">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:ShiftItem">
+                        <Frame Margin="4" Padding="12" BorderColor="#649B33">
+                            <Grid Margin="0, 0, 0, 0" 
+                                  ColumnDefinitions="Auto, *, *" 
+                                  RowDefinitions="Auto, Auto, Auto"
+                                  HorizontalOptions="FillAndExpand">
+                                <Border Stroke="#649B33"
+                                        StrokeThickness="1"
+                                        StrokeShape="Ellipse 30, 30"
+                                        Margin="0, 0, 30, 0"
+                                        Grid.Row="1" Grid.Column="0"
+                                        HorizontalOptions="Start">
+                                    <Label HorizontalTextAlignment="Center"
+                                           VerticalTextAlignment="Center" 
+                                           WidthRequest="30" HeightRequest="30"
+                                           Text="{Binding Orden}" FontAttributes="Bold" />
+                                </Border>
+                                <Label Margin="0, 5, 0, 5" Grid.Row="0" Grid.Column="1" Text="Hora de inicio" />
+                                <Label Margin="0, 5, 0, 5" Grid.Row="0" Grid.Column="2" Text="{Binding Inicio, StringFormat='{0:HH:mm}'}" />
+                                <Label Margin="0, 5, 0, 5" Grid.Row="1" Grid.Column="1" Text="Hora de término" />
+                                <Label Margin="0, 5, 0, 5" Grid.Row="1" Grid.Column="2" Text="{Binding Fin, StringFormat='{0:HH:mm}'}" />
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+        <StackLayout
+                    x:Name="aiLayout"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    BackgroundColor="WhiteSmoke" Opacity="0.5">
+            <ActivityIndicator Color="{StaticResource Primary}"
+                               HeightRequest="50" 
+                               WidthRequest="50"
+                               x:Name="Waiting" 
+                               IsRunning="True" 
+                               VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentPage>
